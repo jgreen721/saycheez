@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Say Cheez 📷</title>
+  </head>
+  <body>
+    <div class="app">
+      <nav class="nav">
+        <div class="nav-logo-div">
+          <h4 class="bold">SayCheez</h4>
+        </div>
+        <ul class="nav-links">
+          <li class="nav-link-item">
+            <a target="_blank" href="https://github.com/jgreen721">
+              <i class="fab fa-github nav-icon"></i>
+            </a>
+          </li>
+          <li class="nav-link-item">
+            <a target="_blank" href="https://github.com/jgreen721">
+              <i class="fab fa-instagram nav-icon"></i>
+            </a>
+          </li>
+          <li class="nav-link-item">
+            <a target="_blank" href="https://github.com/jgreen721">
+              <i class="fab fa-linkedin nav-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <main class="main">
+        <div class="effects-camera-column">
+          <div class="effects-column">
+            <div class="effects-header section-header">
+              <h3 class="mid-weight">After FX</h3>
+            </div>
+            <ul class="effects-list">
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+              <li class="effect-item">
+                <div class="effect-img-div">
+                  <img class="effect-img" src="climbingimg.jpeg" alt="" />
+                </div>
+              </li>
+            </ul>
+          </div>
+          <section class="camera-column">
+            <div class="camera">
+              <div class="camera-overlay"></div>
+              <video class="video"></video>
+
+              <div class="empty-camera-container">
+                <div class="empty-camera-card">
+                  <i
+                    onclick="handleCameraOnOff()"
+                    data-tooltip="Turn camera on"
+                    class="fas fa-eye-slash empty-camera-icon"
+                  ></i>
+                  <h4 class="mid-weight">Your Web Cam is turned off</h4>
+                </div>
+              </div>
+              <div class="controller-row">
+                <ul class="action-icons">
+                  <li class="action-icon-item">
+                    <button
+                      onclick="handleCameraOnOff()"
+                      class="action-icon-btn"
+                    >
+                      <i class="fas fa-eye-slash action-icon"></i>
+                    </button>
+                  </li>
+                  <li class="action-icon-item">
+                    <button class="action-icon-btn">
+                      <i class="fas fa-microphone action-icon"></i>
+                    </button>
+                  </li>
+                  <li class="action-icon-item">
+                    <button onclick="handlePicture()" class="action-icon-btn">
+                      <i class="fas fa-camera action-icon"></i>
+                    </button>
+                  </li>
+                  <li class="action-icon-item">
+                    <button class="action-icon-btn">
+                      <i class="fas fa-volume-high action-icon"></i>
+                    </button>
+                  </li>
+                </ul>
+                <div class="full-screen-toggle">
+                  <i class="fas fa-expand action-icon"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="filter-screenshot-column">
+          <div class="filter-card section-card">
+            <div class="filter-header section-header">
+              <div class="filter-icon-div"></div>
+              <h3 class="mid-weight">Filters</h3>
+            </div>
+            <ul class="filters-list">
+              <li class="filter-item">
+                <h5 class="filter-h5">Blur</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="blur"
+                  min="0"
+                  max="20"
+                  value="0"
+                  id="blur"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Grayscale</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="grayscale"
+                  id="grayscale"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Brightness</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="brightness"
+                  id="brightness"
+                  min="0"
+                  max="2"
+                  step=".1"
+                  value="1"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Contrast</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="contrast"
+                  id="contrast"
+                  min="0"
+                  max="300"
+                  value="100"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Saturate</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="saturate"
+                  id="saturate"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Hue</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="hue"
+                  id="hue"
+                  min="0"
+                  max="90"
+                  value="0"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Sepia</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="sepia"
+                  id="sepia"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </li>
+              <li class="filter-item">
+                <h5 class="filter-h5">Invert</h5>
+                <input
+                  type="range"
+                  class="filter-range-input"
+                  name="invert"
+                  id="invert"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </li>
+            </ul>
+          </div>
+          <div class="screenshot section-card">
+            <div class="screenshot-header section-header">
+              <div class="screenshot-icon-div">
+                <i class="fas fa-user"></i>
+              </div>
+              <h4 class="mid-weight">Screenshot</h4>
+            </div>
+            <div class="screenshot-container">
+              <div class="empty-screenshot-container">
+                <div class="empty-screenshot-card">
+                  <i class="fas fa-camera empty-screenshot-icon"></i>
+                  <h3 class="mid-weight">No screenshot</h3>
+                  <p class="thin">
+                    (Click camera icon on the tool tray for screenshot or Ctrl +
+                    Alt + S)
+                  </p>
+                </div>
+              </div>
+              <div class="screenshot-canvas-container">
+                <canvas class="screenshot-canvas"></canvas>
+                <button class="download-btn">
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <strong>BratNGremlinAppz</strong>
+      </footer>
+    </div>
+
+    <script>
+      let cameraOn = false;
+      let videoEl = document.querySelector(".video");
+      let camereaOffCard = document.querySelector(".empty-camera-card");
+      let emptyScreenshotCard = document.querySelector(
+        ".empty-screenshot-container"
+      );
+
+      function handleCameraOnOff() {
+        if (!cameraOn) {
+          turnOnCamera();
+          cameraCleanUp("on");
+          cameraOn = true;
+        } else {
+          console.log("camera is already on! :(");
+          cameraCleanUp("off");
+        }
+
+        function cameraCleanUp(action) {
+          if (action == "on") handleCameraOnDOM();
+          if (action == "off") handleCameraOffDOM();
+        }
+
+        function handleCameraOffDOM() {
+          videoEl.pause();
+          videoEl.srcObject = null;
+          cameraOn = false;
+          document.querySelectorAll(".action-icon")[0].className =
+            "fas fa-eye-slash action-icon";
+        }
+      }
+
+      function handleCameraOnDOM() {
+        document.querySelectorAll(".action-icon")[0].className =
+          "fas fa-eye action-icon";
+        camereaOffCard.style.display = "none";
+      }
+
+      function turnOnCamera() {
+        navigator.mediaDevices
+          .getUserMedia({ video: true, audio: false })
+          .then((res) => {
+            console.log("Res", res);
+            videoEl.srcObject = res;
+            videoEl.onloadedmetadata = () => {
+              console.log("video is loaded!");
+              videoEl.play();
+            };
+          });
+      }
+
+      //canvas logic
+
+      let canvas = document.querySelector(".screenshot-canvas");
+
+      function handlePicture() {
+        if (!cameraOn) {
+          console.log("camera is not on! Cant take a picture");
+          emptyScreenshotCard.style.display = "block";
+        } else {
+          let ctx = canvas.getContext("2d");
+          ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+          canvas.style.filter = filterOptions;
+          emptyScreenshotCard.style.display = "none";
+        }
+      }
+
+      //range inputs
+
+      //   var blurRange = document.querySelector("#blur");
+      //   var grayScaleRange = document.querySelector("#grayscale");
+      var rangeInputs = document.querySelectorAll("input[type='range']");
+      var blurVal = 0;
+      var grayScaleVal = 0;
+      var brightnessVal = 1;
+      var contrastVal = 100;
+      var saturateVal = 0;
+      var hueRotateVal = 0;
+      var sepiaVal = 0;
+      var invertVal = 0;
+      let filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+
+      //   blurRange.oninput = (e) => {
+      //     console.log(e.target.value);
+      //     blurVal = e.target.value;
+      //     filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal})`;
+      //     //  brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+      //     videoEl.style.filter = filterOptions;
+      //   };
+
+      //   grayScaleRange.oninput = (e) => {
+      //     console.log(e.target.value);
+      //     grayScaleVal = e.target.value;
+      //     filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal})`;
+      //     //  brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+      //     videoEl.style.filter = filterOptions;
+      //   };
+
+      rangeInputs.forEach((input) => {
+        input.onchange = (e) => {
+          let rangeName = e.target.name;
+          console.log("Name", rangeName);
+
+          switch (rangeName) {
+            case "blur":
+              blurVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%)`;
+              break;
+
+            case "grayscale":
+              grayScaleVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "grayscale":
+              grayScaleVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "brightness":
+              brightnessVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "contrast":
+              contrastVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "hue":
+              hueRotateVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "sepia":
+              sepiaVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            case "invert":
+              invertVal = e.target.value;
+              filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) hue-rotate(${hueRotateVal}deg) sepia(${sepiaVal}%) invert(${invertVal}%)`;
+              break;
+
+            default:
+              console.log("ERROR -- unknown range input name value!");
+          }
+
+          videoEl.style.filter = filterOptions;
+        };
+      });
+    </script>
+  </body>
+</html>
