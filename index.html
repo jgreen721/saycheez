@@ -11,6 +11,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link rel="stylesheet" href="index.css" />
 
     <link rel="stylesheet" href="style.css" />
@@ -18,7 +24,7 @@
   </head>
   <body>
     <div class="app">
-      <nav class="nav">
+      <nav class="nav component">
         <div class="nav-logo-div">
           <h4 class="bold">SayCheez</h4>
         </div>
@@ -42,7 +48,7 @@
       </nav>
       <main class="main">
         <div class="effects-camera-column">
-          <div class="effects-column">
+          <div class="effects-column component">
             <div class="effects-header section-header">
               <h3 class="mid-weight">After FX</h3>
             </div>
@@ -79,7 +85,7 @@
               </li>
             </ul>
           </div>
-          <section class="camera-column">
+          <section class="camera-column component">
             <div class="camera">
               <div class="camera-overlay"></div>
               <video class="video"></video>
@@ -105,7 +111,7 @@
                     </button>
                   </li>
                   <li class="action-icon-item">
-                    <button class="action-icon-btn">
+                    <button class="action-icon-btn disabled">
                       <i class="fas fa-microphone action-icon"></i>
                     </button>
                   </li>
@@ -115,7 +121,7 @@
                     </button>
                   </li>
                   <li class="action-icon-item">
-                    <button class="action-icon-btn">
+                    <button class="action-icon-btn disabled">
                       <i class="fas fa-volume-high action-icon"></i>
                     </button>
                   </li>
@@ -128,7 +134,7 @@
           </section>
         </div>
         <div class="filter-screenshot-column">
-          <div class="filter-card section-card">
+          <div class="filter-card section-card component">
             <div class="filter-header section-header">
               <div class="filter-icon-div"></div>
               <h3 class="mid-weight">Filters</h3>
@@ -233,7 +239,7 @@
               </li>
             </ul>
           </div>
-          <div class="screenshot section-card">
+          <div class="screenshot section-card component">
             <div class="screenshot-header section-header">
               <div class="screenshot-icon-div">
                 <i class="fas fa-user"></i>
@@ -263,7 +269,7 @@
         </div>
       </main>
 
-      <footer class="footer">
+      <footer class="footer component">
         <strong>BratNGremlinAppz</strong>
       </footer>
     </div>
@@ -357,6 +363,7 @@
 
         const anchorElement = document.createElement("a");
         anchorElement.href = href;
+        anchorElement.style.filter = filterOptions;
         anchorElement.download = "test-img.png";
 
         document.body.appendChild(anchorElement);
@@ -432,6 +439,15 @@
           videoEl.style.filter = filterOptions;
         };
       });
+
+      //gsap animations
+
+      let tl = gsap.timeline();
+
+      console.log(tl);
+
+      tl.from(".app", { scale: 0 });
+      tl.from(".component", { scale: 0, stagger: 0.2 });
     </script>
   </body>
 </html>
