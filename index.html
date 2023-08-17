@@ -253,7 +253,8 @@
               </div>
               <div class="screenshot-canvas-container">
                 <canvas class="screenshot-canvas"></canvas>
-                <button class="download-btn">
+                <div class="downloadable-screenshot"></div>
+                <button class="download-btn" onclick="handleDownload()">
                   <i class="fas fa-download"></i>
                 </button>
               </div>
@@ -321,6 +322,9 @@
       //canvas logic
 
       let canvas = document.querySelector(".screenshot-canvas");
+      let downloadableScreenshotEl = document.querySelector(
+        ".downloadable-screenshot"
+      );
 
       function handlePicture() {
         if (!cameraOn) {
@@ -331,13 +335,39 @@
           ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
           canvas.style.filter = filterOptions;
           emptyScreenshotCard.style.display = "none";
+          let imgData = canvas.toDataURL();
+          let img = document.createElement("img");
+          img.src = imgData;
+          img.style.filter = filterOptions;
+          img.download = "test.png";
+          img.className = "user-img";
+          console.log(img);
+          downloadableScreenshotEl.innerHTML = "";
+          downloadableScreenshotEl.appendChild(img);
         }
+      }
+
+      async function handleDownload() {
+        console.log("handleDownload()");
+        let image = await fetch(document.querySelector(".user-img").src);
+        let imageBlob = await image.blob();
+        console.log(imageBlob);
+
+        const href = URL.createObjectURL(imageBlob);
+
+        const anchorElement = document.createElement("a");
+        anchorElement.href = href;
+        anchorElement.download = "test-img.png";
+
+        document.body.appendChild(anchorElement);
+        anchorElement.click();
+
+        document.body.removeChild(anchorElement);
+        window.URL.revokeObjectURL(href);
       }
 
       //range inputs
 
-      //   var blurRange = document.querySelector("#blur");
-      //   var grayScaleRange = document.querySelector("#grayscale");
       var rangeInputs = document.querySelectorAll("input[type='range']");
       var blurVal = 0;
       var grayScaleVal = 0;
@@ -348,22 +378,6 @@
       var sepiaVal = 0;
       var invertVal = 0;
       let filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
-
-      //   blurRange.oninput = (e) => {
-      //     console.log(e.target.value);
-      //     blurVal = e.target.value;
-      //     filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal})`;
-      //     //  brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
-      //     videoEl.style.filter = filterOptions;
-      //   };
-
-      //   grayScaleRange.oninput = (e) => {
-      //     console.log(e.target.value);
-      //     grayScaleVal = e.target.value;
-      //     filterOptions = `blur(${blurVal}px) grayscale(${grayScaleVal}%) brightness(${brightnessVal})`;
-      //     //  brightness(${brightnessVal}) contrast(${contrastVal}%) saturate(${saturateVal}%) hue-rotate(${hueRotateVal}%) sepia(${sepiaVal}%) invert(${invertVal}%)`;
-      //     videoEl.style.filter = filterOptions;
-      //   };
 
       rangeInputs.forEach((input) => {
         input.onchange = (e) => {
